@@ -55,7 +55,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   storeDispatch : dispatch,
-  addPerson: (name, age) => dispatch(actionCreators.addPerson(name, age)),
+  addPerson: (name, age) => dispatch(actionCreators.addPersonAsync(name, age)),
   removePerson: (id) => dispatch(actionCreators.removePerson(id))
 });
 

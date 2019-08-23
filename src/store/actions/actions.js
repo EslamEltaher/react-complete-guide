@@ -11,3 +11,10 @@ export const removePerson = id => ({
     type: REMOVE_PERSON, 
     personId: id
 });
+export const addPersonAsync = (name, age) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(addPerson(name, age))
+        },2000);
+    }
+}
