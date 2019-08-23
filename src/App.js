@@ -3,13 +3,13 @@ import './App.css';
 import Persons from './components/Persons';
 import AddPerson from './components/AddPerson/AddPerson';
 import { connect } from 'react-redux';
-import * as actionTypes from './store/actionTypes'
+import * as actionCreators from './store/actions/actions'
 
 class App extends Component {
   componentDidMount = () => {
-    this.props.storeDispatch({ type: actionTypes.ADD_PERSON, personData: { name: "Eslam",  age: 26 } });
-    this.props.storeDispatch({ type: actionTypes.ADD_PERSON, personData: { name: "Maximilian",  age: 28 } });
-    this.props.storeDispatch({ type: actionTypes.ADD_PERSON, personData: { name: "Manu",  age: 29 } });
+    this.props.storeDispatch(actionCreators.addPerson("Eslam", 26));
+    this.props.storeDispatch(actionCreators.addPerson("Maximilian", 28));
+    this.props.storeDispatch(actionCreators.addPerson("Manu", 29));
   }
 
   state = { 
@@ -55,8 +55,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   storeDispatch : dispatch,
-  addPerson: (name, age) => dispatch({ type: actionTypes.ADD_PERSON, personData: { name, age } }),
-  removePerson: (id) => dispatch({ type: actionTypes.REMOVE_PERSON, personId: id})
+  addPerson: (name, age) => dispatch(actionCreators.addPerson(name, age)),
+  removePerson: (id) => dispatch(actionCreators.removePerson(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
